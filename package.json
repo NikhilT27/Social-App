@@ -1,5 +1,5 @@
 {
-  "name": "MERNG",
+  "name": "social-app",
   "version": "1",
   "main": "index.js",
   "scripts": {
@@ -8,11 +8,13 @@
   "license": "MIT",
   "dependencies": {
     "apollo-server": "^2.18.2",
+    "bcryptjs": "^2.4.3",
     "graphql": "^15.3.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.9"
   },
   "devDependencies": {
     "nodemon": "^2.0.5",
-    "prettier": "^2.1.2"
+    "prettier": "2.1.2"
   }
 }

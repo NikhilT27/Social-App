@@ -1,4 +1,4 @@
 {
-    "editor.formatOnSave": true,
-    "prettier.packageManager": "yarn"
+  "editor.formatOnSave": true,
+  "prettier.packageManager": "yarn"
 }
