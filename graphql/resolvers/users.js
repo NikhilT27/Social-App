@@ -10,6 +10,7 @@ const { SECRET_KEY } = require("../../config");
 const User = require("../../models/User");
 
 const generateToken = (user) => {
+  console.log(user);
   return jwt.sign(
     {
       id: user.id,
@@ -87,6 +88,7 @@ module.exports = {
       const res = await newUser.save();
 
       const token = generateToken(res);
+      console.log(token);
 
       return {
         ...res._doc,

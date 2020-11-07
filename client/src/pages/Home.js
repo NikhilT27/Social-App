@@ -7,10 +7,9 @@ import PostCard from "../components/PostCard";
 
 function Home() {
   const { loading, data } = useQuery(FETCH_POST_QUERY);
-  console.log("Asda");
+
   if (data) {
     var { getPosts: posts } = data;
-    console.log(posts);
   }
 
   return (
