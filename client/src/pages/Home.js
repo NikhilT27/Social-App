@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useQuery } from "@apollo/client";
-import gql from "graphql-tag";
-import { Grid } from "semantic-ui-react";
+import { Grid, Transition } from "semantic-ui-react";
+import { FETCH_POSTS_QUERY } from "../util/graphql";
 
 import { AuthContext } from "../context/auth";
 import PostCard from "../components/PostCard";
@@ -9,7 +9,7 @@ import PostForm from "../components/PostForm";
 
 function Home() {
   const { user } = useContext(AuthContext);
-  const { loading, data } = useQuery(FETCH_POST_QUERY);
+  const { loading, data } = useQuery(FETCH_POSTS_QUERY);
 
   if (data) {
     var { getPosts: posts } = data;
@@ -29,35 +29,18 @@ function Home() {
         {loading ? (
           <h1>loading</h1>
         ) : (
-          posts &&
-          posts.map((post) => (
-            <Grid.Column key={post.id}>
-              <PostCard post={post} />
-            </Grid.Column>
-          ))
+          <Transition.Group>
+            {posts &&
+              posts.map((post) => (
+                <Grid.Column key={post.id}>
+                  <PostCard post={post} />
+                </Grid.Column>
+              ))}
+          </Transition.Group>
         )}
       </Grid.Row>
     </Grid>
   );
 }
-
-const FETCH_POST_QUERY = gql`
-  {
-    getPosts {
-      id
-      body
-      createdAt
-      username
-      likeCount
-      likes {
-        username
-      }
-      comments {
-        username
-      }
-      commentCount
-    }
-  }
-`;
 
 export default Home;
